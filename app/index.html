@@ -15,16 +15,12 @@
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
-  <body>
+  <body ng-app="eventoZukuri">
     <header>
       <span class="app-title">EventoZukuri</span>
     </header>
     <div class="container-fluid">
-      <div class="text-center">
-        <a type="button" class="btn btn-success" ng-href="#/" >Sign Up</a>
-        <a type="button" class="btn btn-primary" ng-href="#/" >Log In</a>    
-      </div>
-    
+        <div ui-view></div>
     </div>
     
     <!-- build:js scripts/vendor.js -->
@@ -40,6 +36,7 @@
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/eventoZukuri.js"></script>
     <script src="scripts/main/main-ctrl.js"></script>
+    <script src="scripts/login/login-ctrl.js"></script>
     <!-- inject:partials -->
     <!-- endinject -->
     <!-- endbuild -->
