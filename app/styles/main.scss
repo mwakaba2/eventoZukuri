@@ -2,17 +2,44 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 
 @import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+body {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0px 0px 10px 0px;
 }
 
-.thumbnail {
-  height: 200px;
+header {
+	position: fixed;
+	display:block;
+	height: 50px;
+	background: #4da6ff;
+	min-width: 100%;
+	padding: 0px 10px;
+	font-size: 2em;
+}
 
-  img.pull-right {
-    width: 50px;
-  }
+.app-title {
+	color: #fff;
+}
+
+.container-fluid {
+	padding-top: 150px;
+}
+
+@media screen and (max-width: 450px) {
+	.app-title {
+		display: block;
+		width: 230px;
+		margin: 0 auto;
+		text-align: center;
+	} 
+}
+
+@media screen and (min-width: 451px) {
+	.app-title {
+		display: inline;
+	}
+}
+
+@media screen and (min-width: 651px) {
+
 }
