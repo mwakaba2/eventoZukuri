@@ -27,16 +27,27 @@
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
-    <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
-    <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
-    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
-    <script src="scripts/eventoZukuri.js"></script>
-    <script src="scripts/main/main-ctrl.js"></script>
-    <script src="scripts/login/login-ctrl.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/home.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/register.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+        apiKey: "AIzaSyAkf_8iuJEii40V0DzFaeVJ9LnpjmCbi64",
+        authDomain: "eventozukuri-9783f.firebaseapp.com",
+        databaseURL: "https://eventozukuri-9783f.firebaseio.com",
+        storageBucket: "eventozukuri-9783f.appspot.com",
+        };
+        firebase.initializeApp(config);
+    </script>
     <!-- inject:partials -->
     <!-- endinject -->
     <!-- endbuild -->
