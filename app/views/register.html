@@ -1,1 +1,9 @@
-<h1>Hi I am the register view!</h1>
+<form>
+	Name: <input type="text" ng-model="register.name" required/><br />
+    E-mail: <input type="email" ng-model="register.email" required/><br />
+    Password: <input type="text" ng-model="register.password" required/><br />
+    Employer: <input type="text" ng-model="register.employer"><br />
+    Job Title: <input type="text" ng-model="register.jobTitle"><br />
+    Birthday: <input type="date" ng-model="register.bday" placeholder="yyyy-MM-dd"/>
+    <button ng-click="register.signUp()">Submit</button>
+</form>
