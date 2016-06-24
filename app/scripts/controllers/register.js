@@ -11,11 +11,6 @@ angular
 				// Handle Errors here.
 				var errorCode = error.code;
 				var errorMessage = error.message;
-				if(errorMessage === undefined) {
-					console.log("success!");
-				} else {
-					console.log(errorMessage);
-				}
 			});
 		};
 
