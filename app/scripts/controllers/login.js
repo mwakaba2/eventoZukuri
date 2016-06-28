@@ -2,9 +2,15 @@
 
 angular
 	.module('eventoZukuri')
-	.controller('LoginCtrl', ['$scope', '$firebaseObject', function ($scope, $firebaseObject) {
+	.controller('LoginCtrl', ['$firebaseObject', function ($firebaseObject) {
 		var ref = firebase.database().ref();
-		// download the data into a local object
-		$scope.data = $firebaseObject(ref);
-		// putting a console.log here won't work, see below
+		this.data = $firebaseObject(ref);
+		
+		this.signIn = function() {
+			firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
+				// Handle Errors here.
+				var errorCode = error.code;
+				var errorMessage = error.message;
+			});
+		};
 	}]);
