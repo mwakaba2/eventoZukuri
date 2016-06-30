@@ -2,13 +2,14 @@
 
 angular
 	.module('eventoZukuri')
-	.controller('LoginCtrl', ['$firebaseObject', function ($firebaseObject) {
+	.controller('LoginCtrl', ['$state', '$firebaseObject', function ($state, $firebaseObject) {
 		var ref = firebase.database().ref();
 		this.data = $firebaseObject(ref);
 		
 		this.signIn = function() {
 			firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(function(user) {
 				console.log("Signed in as: ", user.uid);
+				$state.go('home');
 			}).catch(function(error) {
 				// Handle Errors here.
 				var errorCode = error.code;

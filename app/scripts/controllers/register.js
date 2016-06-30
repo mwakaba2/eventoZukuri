@@ -2,7 +2,7 @@
 
 angular
 	.module('eventoZukuri')
-	.controller('RegisterCtrl', ['$firebaseObject', function ($firebaseObject) {
+	.controller('RegisterCtrl', ['$state', '$firebaseObject', function ($state, $firebaseObject) {
 		var ref = firebase.database().ref();
 		this.data = $firebaseObject(ref);
 
@@ -10,6 +10,7 @@ angular
 			firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
 				console.log("Creating user: ", user.uid);
 				saveUser(user.uid, name, email, employer, jobTitle, bday);
+				$state.go('home');
 			}).catch(function(error) {
 				// Handle Errors here.
 				var errorCode = error.code;
@@ -28,7 +29,7 @@ angular
 				email: email,
 				employer: employer,
 				jobTitle: jobTitle,
-				bday: bday
+				bday: bday	
 			});
 		}
 
