@@ -3,8 +3,17 @@
 angular
 	.module('eventoZukuri')
 	.controller('HomeCtrl', ['$scope', '$firebaseObject', function ($scope, $firebaseObject) {
-		var ref = firebase.database().ref();
-		// download the data into a local object
-		$scope.data = $firebaseObject(ref);
-		// putting a console.log here won't work, see below
+		$scope.currUser = firebase.auth().currentUser;
+
+		if($scope.currUser) {
+			var userId = $scope.currUser.id;
+			firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+				var name = snapshot.val().name;
+				console.log(name);
+			});
+			console.log("User " + $scope.currUser.uid + " is logged in");
+		} else {
+			console.log("User is logged out.");
+		}
+
 	}]);
