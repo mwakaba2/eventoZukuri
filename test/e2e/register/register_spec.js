@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Login page links', function() {
-	
+
 	beforeEach(function () {
 		browser.get('http://localhost:3000/#/register');
 	});

@@ -6,10 +6,9 @@ angular
 		$scope.currUser = firebase.auth().currentUser;
 
 		if($scope.currUser) {
-			var userId = $scope.currUser.id;
+			var userId = $scope.currUser.uid;
 			firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-				var name = snapshot.val().name;
-				console.log(name);
+				$scope.name = snapshot.val().name;
 			});
 			console.log("User " + $scope.currUser.uid + " is logged in");
 		} else {
