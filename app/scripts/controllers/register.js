@@ -23,13 +23,13 @@ angular
 			employer = employer === undefined ? '' : employer;
 			jobTitle = jobTitle === undefined ? '' : jobTitle;
 			bday = bday === undefined ? '' : bday;
-			
+
 			firebase.database().ref('users/' + userId).set({
 				name: name,
 				email: email,
 				employer: employer,
 				jobTitle: jobTitle,
-				bday: bday	
+				bday: bday
 			});
 		}
 

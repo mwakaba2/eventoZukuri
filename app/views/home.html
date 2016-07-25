@@ -1,4 +1,7 @@
-<h1 id="title">Landing Page</h1>
-<h3 id="greeting" ng-hide="currUser == null">Hi {{name}}!</h3>
-<a ui-sref="login">Login</a>
-<a ui-sref="register">Signup</a>
+<h3 id="greeting" ng-show="currUser">Hi {{name}}!</h3>
+<h1 id="title">Events</h1>
+<a ng-hide="currUser" ui-sref="login">Login</a>
+<a ng-hide="currUser" ui-sref="register">Signup</a>
+<div ng-repeat="event in events">
+	<h2>{{event.title}}</h2>
+</div>
