@@ -19,5 +19,10 @@ angular
 				url: '/register',
 				templateUrl: 'views/register.html',
 				controller: 'RegisterCtrl as register'
+			})
+			.state('create', {
+				url: '/create',
+				templateUrl: 'views/create.html',
+				controller: 'CreateCtrl as create'
 			});
 	}]);

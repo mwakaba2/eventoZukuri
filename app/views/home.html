@@ -2,6 +2,7 @@
 <h1 id="title">Events</h1>
 <a ng-hide="currUser" ui-sref="login">Login</a>
 <a ng-hide="currUser" ui-sref="register">Signup</a>
+<button ng-show="currUser" ui-sref="create">Create Event</button>
 <div ng-repeat="event in events">
 	<h2>{{event.title}}</h2>
 </div>
