@@ -1,4 +1,5 @@
 <h3 id="greeting" ng-show="currUser">Hi {{name}}!</h3>
+<a ng-show="currUser" ng-click="home.signOut()">Signout</a>
 <h1 id="title">Events</h1>
 <a ng-hide="currUser" ui-sref="login">Login</a>
 <a ng-hide="currUser" ui-sref="register">Signup</a>

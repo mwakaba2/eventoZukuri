@@ -22,9 +22,9 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
   return gulp.src('app/scripts/**/*.js')
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.size());
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.eslint.failOnError());
 });
 
 gulp.task('partials', function () {

@@ -5,7 +5,7 @@ describe('Home page links', function() {
 	var urlChanged = function(url) {
 		return function () {
 			return browser.getCurrentUrl().then(function(actualUrl) {
-	  			return url != actualUrl;
+	 			return url != actualUrl;
 			});
 		};
 	};

@@ -20,6 +20,16 @@ angular
 			console.log("User is logged out.");
 		}
 
+		this.signOut = function() {
+			firebase.auth().signOut().then(function() {
+			  // Sign-out successful.
+			  console.log("Successfully signed out!");
+			  $scope.currUser = undefined;
+			  $scope.$apply();
+			}, function(error) {
+			  // An error happened.
+			});
+		};
 
 		// function writeNewEvent(uid, username, title, body) {
 		//   // A post entry.
