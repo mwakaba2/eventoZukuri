@@ -10,7 +10,7 @@ angular
 			firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
 				console.log("Creating user: ", user.uid);
 				saveUser(user.uid, name, email, employer, jobTitle, bday);
-				$state.go('home');
+				$state.go('home.events');
 			}).catch(function(error) {
 				// Handle Errors here.
 				var errorCode = error.code;

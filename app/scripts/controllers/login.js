@@ -8,7 +8,7 @@ angular
 		this.signIn = function() {
 			firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(function(user) {
 				console.log("Signed in as: ", user.uid);
-				$state.go('home');
+				$state.go('home.events');
 			}).catch(function(error) {
 				// Handle Errors here.
 				var errorCode = error.code;

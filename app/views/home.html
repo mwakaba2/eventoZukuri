@@ -1,9 +1,6 @@
 <h3 id="greeting" ng-show="currUser">Hi {{name}}!</h3>
 <a ng-show="currUser" ng-click="home.signOut()">Signout</a>
-<h1 id="title">Events</h1>
 <a ng-hide="currUser" ui-sref="login">Login</a>
 <a ng-hide="currUser" ui-sref="register">Signup</a>
-<button ng-show="currUser" ui-sref="create">Create Event</button>
-<div ng-repeat="event in events">
-	<h2>{{event.title}}</h2>
-</div>
+<div ui-view="main"></div>
+

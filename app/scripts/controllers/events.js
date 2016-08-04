@@ -1,33 +1,18 @@
-'use strict';
-
 angular
 	.module('eventoZukuri')
-	.controller('HomeCtrl', ['$scope', '$firebaseObject', '$firebaseArray', function ($scope, $firebaseObject, $firebaseArray) {
+	.controller('EventsCtrl', ['$scope', '$firebaseObject', '$firebaseArray', function ($scope, $firebaseObject, $firebaseArray) {
 		$scope.currUser = firebase.auth().currentUser;
-		if($scope.currUser) {
-			var userId = $scope.currUser.uid;
-			firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-				$scope.name = snapshot.val().name;
+		var recentEventsRef = firebase.database().ref('events');
+		// $scope.events = $firebaseArray(recentEventsRef);
+		// $scope.events.$loaded()
+		// .then(function(data){
+		// 	$scope.events = data;
+		// });
+		firebase.database().ref('/events').once('value').then(function(snapshot) {
+				$scope.events = snapshot.val();
+				console.log($scope.events);
 				// writeNewEvent(userId, $scope.name, "Hello Chicago", "This is a cool event");
-			});
-			console.log('User ' + $scope.currUser.uid + ' is logged in');
-
-
-		} else {
-			console.log('User is logged out.');
-		}
-
-		this.signOut = function() {
-			firebase.auth().signOut().then(function() {
-				// Sign-out successful.
-				console.log("Successfully signed out!");
-				$scope.currUser = undefined;
-				$scope.$apply();
-			}, function(error) {
-				// An error happened.
-			});
-		};
-
+		});
 		// function writeNewEvent(uid, username, title, body) {
 		//   // A post entry.
 		//   var eventData = {

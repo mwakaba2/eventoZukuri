@@ -7,22 +7,36 @@ angular
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'views/home.html',
-				controller: 'HomeCtrl as home'
+				abstract: true,
+				views : {
+					'': {
+						templateUrl: 'views/home.html',
+						controller: 'HomeCtrl as home',
+					},
+				}
+			})
+			.state('home.events', {
+				url: '',
+				views: {
+					'main@home': {
+						templateUrl: 'views/events/events.html',
+						controller: 'EventsCtrl as events',
+					}
+				}
 			})
 			.state('login', {
 				url: '/login',
 				templateUrl: 'views/login.html',
-				controller: 'LoginCtrl as login'
+				controller: 'LoginCtrl as login',
 			})
 			.state('register', {
 				url: '/register',
 				templateUrl: 'views/register.html',
-				controller: 'RegisterCtrl as register'
+				controller: 'RegisterCtrl as register',
 			})
 			.state('create', {
 				url: '/create',
 				templateUrl: 'views/create.html',
-				controller: 'CreateCtrl as create'
+				controller: 'CreateCtrl as create',
 			});
 	}]);
