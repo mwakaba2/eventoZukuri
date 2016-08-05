@@ -24,6 +24,20 @@ angular
 					}
 				}
 			})
+			.state('home.events.event_selected', {
+				url: 'events/:event_id',
+				views: {
+					'main@home': {
+						templateUrl: 'views/events/event-detail.html',
+						controller: 'EventDetailsCtrl as eventDetails',
+					}
+				}
+			})
+			.state('home.create_event', {
+				url: '/new',
+				templateUrl: 'views/create.html',
+				controller: 'CreateCtrl as create',
+			})
 			.state('login', {
 				url: '/login',
 				templateUrl: 'views/login.html',
@@ -33,10 +47,5 @@ angular
 				url: '/register',
 				templateUrl: 'views/register.html',
 				controller: 'RegisterCtrl as register',
-			})
-			.state('create', {
-				url: '/create',
-				templateUrl: 'views/create.html',
-				controller: 'CreateCtrl as create',
 			});
 	}]);

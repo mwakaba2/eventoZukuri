@@ -1,22 +1,16 @@
 angular
 	.module('eventoZukuri')
 	.controller('EventsCtrl', ['$scope', '$firebaseObject', '$firebaseArray', function ($scope, $firebaseObject, $firebaseArray) {
-		$scope.currUser = firebase.auth().currentUser;
-		var recentEventsRef = firebase.database().ref('events');
-		// $scope.events = $firebaseArray(recentEventsRef);
-		// $scope.events.$loaded()
-		// .then(function(data){
-		// 	$scope.events = data;
-		// });
 		firebase.database().ref('/events').once('value').then(function(snapshot) {
-				$scope.events = snapshot.val();
-				console.log($scope.events);
-				// writeNewEvent(userId, $scope.name, "Hello Chicago", "This is a cool event");
+			$scope.events = snapshot.val();
+			console.log($scope.events);
+			$scope.$apply();
 		});
+
 		// function writeNewEvent(uid, username, title, body) {
 		//   // A post entry.
 		//   var eventData = {
-		//     author: username,
+		//     author: username,	
 		//     uid: uid,
 		//     title: title,
 		//     type: 'fun',
@@ -38,6 +32,6 @@ angular
 		//   updates['/user-events/' + uid + '/' + newEventKey] = eventData;
 
 		//   return firebase.database().ref().update(updates);
-		// }
+		//}
 
 	}]);
