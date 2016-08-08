@@ -33,10 +33,14 @@ angular
 					}
 				}
 			})
-			.state('home.create_event', {
-				url: '/new',
-				templateUrl: 'views/create.html',
-				controller: 'CreateCtrl as create',
+			.state('home.events.create_event', {
+				url: 'new',
+				views: {
+					'main@home': {
+						templateUrl: 'views/events/create.html',
+						controller: 'CreateCtrl as create',
+					}
+				}
 			})
 			.state('login', {
 				url: '/login',

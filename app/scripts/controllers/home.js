@@ -2,17 +2,14 @@
 
 angular
 	.module('eventoZukuri')
-	.controller('HomeCtrl', ['$scope', '$firebaseObject', '$firebaseArray', function ($scope, $firebaseObject, $firebaseArray) {
+	.controller('HomeCtrl', ['$scope', '$firebaseObject', '$firebaseArray', '$state', function ($scope, $firebaseObject, $firebaseArray, $state) {
 		$scope.currUser = firebase.auth().currentUser;
 		if($scope.currUser) {
 			var userId = $scope.currUser.uid;
 			firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
 				$scope.name = snapshot.val().name;
-				writeNewEvent(userId, $scope.name, "IceCream Party", "All yo can eat icecream! Treat YO SELF YO!!");
 			});
 			console.log('User ' + $scope.currUser.uid + ' is logged in');
-
-
 		} else {
 			console.log('User is logged out.');
 		}
@@ -22,7 +19,11 @@ angular
 				// Sign-out successful.
 				console.log("Successfully signed out!");
 				$scope.currUser = undefined;
-				$scope.$apply();
+				if($state.is('home.events.create_event')) {
+					$state.go('home.events');
+				} else {
+					$scope.$apply();
+				}
 			}, function(error) {
 				// An error happened.
 			});
