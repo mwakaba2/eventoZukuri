@@ -1,6 +1,52 @@
 <a ui-sref="home.events">Home</a>
 <h3 ng-hide="currUser">Oops! You need to be logged in to see this page</h3>
 <div ng-show="currUser">
-	<h1>Let's create an event!!</h1>
+	<h1>Let's create an event!</h1>
+	<form>
+		<div class="form-group">
+		 	<label>What's the name of the event?</label>
+		 	<input type="title" class="form-control" ng-model="title" placeholder="Enter the event's name">
+		<div class="form-group">
+		 	<label>What kind of event is it?</label>
+		 	<input type="type" class="form-control" ng-model="type" placeholder="Enter the event's type">
+	 	</div>
+		<div class="form-group">
+		 	<label>Whose hosting it?</label>
+		 	<input type="host" class="form-control" ng-model="host" placeholder="Enter the host's name">
+	 	</div>
+		<div class="form-group">
+			<label>What's the start date?</label>
+			<input class="form-control" type="date" ng-model="startDate">
+		</div>
+		<div class="form-group">
+			<label>What time does it start?</label>
+			<input class="form-control" type="time" ng-model="startTime">
+		</div>
+		<div class="form-group">
+			<label>What's the end date?</label>
+			<input class="form-control" type="date" ng-model="endDate">
+		</div>
+		<div class="form-group">
+			<label>What time does it end?</label>
+			<input class="form-control" type="time" ng-model="endTime">
+		</div>
+		<div class="form-group">
+			<label>Whose on your guest list?</label>
+		</div>
+		<div class="form-group">
+			<button ng-click="create.addGuest()" class="btn btn-success">Add Guest</button>
+		</div>
+		<div class="form-group">
+			<label>Where is it going to be?</label>
+			<input class="form-control" ng-model="location">
+		</div>
+		<div class="form-group">
+			<label>Any additional info or message to the guests?</label>
+			<textarea class="form-control" ng-model="message"></textarea>
+		</div>
+		<div class="form-group">
+		 	<button ng-click="create.submitEvent()" type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
 </div>
 
