@@ -1,11 +1,92 @@
 <a ui-sref="home.events">Home</a>
-<form>
-	Name: <input type="text" ng-model="name" required/><br />
-    E-mail: <input type="email" ng-model="email" required/><br />
-    Password: <input type="text" ng-model="password" required/><br />
-    Employer: <input type="text" ng-model="employer"><br />
-    Job Title: <input type="text" ng-model="jobTitle"><br />
-    Birthday: <input type="date" ng-model="bday" placeholder="yyyy-MM-dd"/>
-    <button ng-click="register.signUp(name, email, password, employer, jobTitle, bday)">Submit</button>
+<form name="signupForm">
+  <div class="form-group required">
+    <label>What's you name?</label>
+    <input
+      type="text"
+      class="form-control"
+      ng-model="name"
+      required
+      autofocus
+      autocomplete="name"
+    />
+  </div>
+  <div class="form-group required">
+    <label>What's your email address?</label>
+    <input type="email" class="form-control" ng-model="email" required autocomplete="email"/>
+  </div>
+  <div class="form-group">
+    <div class="msg-block" ng-show="signupForm.$error">
+      <span class="msg-error" ng-show="signupForm.pass1.$error.pwinvalid">
+        <ul>
+          <li>Must be at least 8 characters long</li>
+          <li>Must include at least one uppercase letter</li>
+          <li>Must include at least one special letter</li>
+          <li>Must include at least one number</li>
+        </ul>
+      </span>
+    </div>
+  </div>
+  <div class="form-group required">
+    <label>Let's create a password!</label>
+    <input
+      type="password"
+      id="pass1"
+      name="pass1"
+      class="form-control"
+      ng-model="pass1"
+      ng-required=""
+      pw-valid
+    />
+  </div>
+  <div class="form-group">
+    <div class="msg-block" ng-show="signupForm.$error">
+      <span class="msg-error" ng-show="signupForm.pass2.$error.pwmatch">
+        Passwords don't match.
+      </span>
+    </div>
+  </div>
+  <div class="form-group required">
+    <label>Let's confirm your password</label>
+    <input
+      type="password"
+      id="pass2"
+      name="pass2"
+      class="form-control"
+      ng-model="pass2"
+      ng-required=""
+      pw-check="pass1"
+    />
+  </div>
+  <div class="form-group">
+    <label>Who do you work for?</label>
+    <input
+      type="text"
+      class="form-control"
+      ng-model="employer"
+      placeholder="Groupon"
+    />
+  </div>
+  <div class="form-group">
+    <label>What do you do?</label>
+    <input
+      type="text"
+      class="form-control"
+      ng-model="jobTitle"
+      placeholder="Software Developer"
+    />
+  </div>
+  <div class="form-group">
+    <label>Birthday</label>
+    <input type="date" class="form-control" ng-model="bday"/>
+  </div>
+  <div class="form-group">
+    <button
+      ng-click="register.signUp()"
+      ng-disabled="signupForm.$pristine || signupForm.$invalid"
+      type="submit"
+      class="btn btn-primary"
+    >Submit</button>
+  </div>
 	<a ui-sref="login">Login</a>
 </form>

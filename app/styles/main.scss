@@ -25,6 +25,24 @@ header {
 	padding-top: 150px;
 }
 
+.msg-block {
+    margin-top:5px;
+}
+
+.msg-error {
+    color:#F00;
+    font-size:14px;
+}
+
+.required label {
+    font-weight: bold;
+}
+.required label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
+
 @media screen and (max-width: 450px) {
 	.app-title {
 		display: block;
