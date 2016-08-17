@@ -5,7 +5,7 @@
     "extends": "eslint:recommended",
     "rules": {
         "indent": [
-            "error",
+            "off",
             "tab"
         ],
         "linebreak-style": [

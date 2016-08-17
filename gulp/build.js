@@ -1,18 +1,20 @@
+/*eslint no-undef: "error"*/
+/*eslint-env node*/
 'use strict';
 
 var gulp = require('gulp');
 
 var $ = require('gulp-load-plugins')({
-  pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license']
+	pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license']
 });
 
 gulp.task('styles', function () {
-  return gulp.src('app/styles/main.scss')
+	return gulp.src('app/styles/main.scss')
     .pipe($.plumber())
     .pipe($.sass({
-      errLogToConsole: false,
-      onError: function(err) {
-        return $.notify().write(err);
+			errLogToConsole: false,
+			onError: function(err) {
+				return $.notify().write(err);
       }
     }))
     .pipe($.autoprefixer('last 1 version'))
@@ -21,18 +23,18 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
-  return gulp.src('app/scripts/**/*.js')
+	return gulp.src('app/scripts/**/*.js')
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.eslint.failOnError());
 });
 
 gulp.task('partials', function () {
-  return gulp.src('app/partials/**/*.html')
+	return gulp.src('app/partials/**/*.html')
     .pipe($.minifyHtml({
-      empty: true,
-      spare: true,
-      quotes: true
+			empty: true,
+			spare: true,
+			quotes: true
     }))
     .pipe($.ngHtml2js({
       moduleName: 'eventoZukuri',
