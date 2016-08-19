@@ -6,6 +6,7 @@
 		<div class="form-group">
 		 	<label>What's the name of the event?</label>
 		 	<input type="title" class="form-control" ng-model="title" placeholder="Enter the event's name">
+	 	</div>
 		<div class="form-group">
 		 	<label>What kind of event is it?</label>
 		 	<input type="type" class="form-control" ng-model="type" placeholder="Enter the event's type">
@@ -32,9 +33,15 @@
 		</div>
 		<div class="form-group">
 			<label>Whose on your guest list?</label>
+			<ul>
+        <li ng-repeat="guest in guests">
+          <span>{{guest}}</span>
+        </li>
+      </ul>
+			<input class="form-control" placeholder="Mr. Potato" type="text" ng-model="guest">
 		</div>
 		<div class="form-group">
-			<button ng-click="create.addGuest()" class="btn btn-success">Add Guest</button>
+			<button ng-click="addGuest()" class="btn btn-success">Add Guest</button>
 		</div>
 		<div class="form-group">
 			<label>Where is it going to be?</label>
@@ -45,7 +52,7 @@
 			<textarea class="form-control" ng-model="message"></textarea>
 		</div>
 		<div class="form-group">
-		 	<button ng-click="create.submitEvent()" type="submit" class="btn btn-primary">Submit</button>
+		 	<button ng-click="submitEvent()" type="submit" class="btn btn-primary">Submit</button>
 		</div>
 	</form>
 </div>

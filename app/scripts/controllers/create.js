@@ -4,27 +4,36 @@ angular
 	.module('eventoZukuri')
 	.controller('CreateCtrl', ['$scope', '$firebaseObject', '$state', function ($scope, $firebaseObject, $state) {
 		$scope.currUser = firebase.auth().currentUser;
-		$scope.startDate = new Date();
-		$scope.startDate.setMilliseconds(0);
-		$scope.endDate = new Date();
-		$scope.endDate.setMilliseconds(0);
+		$scope.startDate = getDate();
+		$scope.endDate = getDate();
 		$scope.startTime = $scope.startDate;
 		$scope.endTime = $scope.endDate;
+		$scope.guests = [];
 		var userId;
 
 		if($scope.currUser) {
-			var userId = $scope.currUser.uid;
+			userId = $scope.currUser.uid;
 			firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
 				$scope.name = snapshot.val().name;
 			});
-		} else {
-			console.log('User is logged out.');
 		}
 
-		this.submitEvent = function() {
+		$scope.addGuest = function() {
+			$scope.guests.push($scope.guest);
+			$scope.guest = '';
+		};
+
+		$scope.submitEvent = function() {
 			var eventKey = writeNewEvent(userId);
 			$state.go('home.events.event_selected', { 'event_id': eventKey });
 		};
+
+		function getDate() {
+			var newDate = new Date();
+			newDate.setMilliseconds(0);
+			newDate.setSeconds(0);
+			return newDate;
+		}
 
 		function writeNewEvent(uid) {
 			// A post entry.
@@ -37,7 +46,7 @@ angular
 				start_time: $scope.startTime,
 				end_time: $scope.endTime,
 				location: $scope.location,
-				guest_list: [],
+				guest_list: $scope.guests,
 				message: $scope.message || '',
 			};
 
