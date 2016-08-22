@@ -9,6 +9,7 @@ angular
 		$scope.startTime = $scope.startDate;
 		$scope.endTime = $scope.endDate;
 		$scope.guests = [];
+		$scope.noGuests = true;
 		var userId;
 
 		if($scope.currUser) {
@@ -19,13 +20,20 @@ angular
 		}
 
 		$scope.addGuest = function() {
-			$scope.guests.push($scope.guest);
-			$scope.guest = '';
+			if($scope.guest) {
+				$scope.noGuests = false;
+				$scope.guests.push($scope.guest);
+				$scope.guest = '';
+			}
 		};
 
 		$scope.submitEvent = function() {
-			var eventKey = writeNewEvent(userId);
-			$state.go('home.events.event_selected', { 'event_id': eventKey });
+			if($scope.guests.length > 0) {
+				var eventKey = writeNewEvent(userId);
+				$state.go('home.events.event_selected', { 'event_id': eventKey });
+			} else {
+				$scope.noGuests = true;
+			}
 		};
 
 		function getDate() {

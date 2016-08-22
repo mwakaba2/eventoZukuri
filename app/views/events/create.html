@@ -2,57 +2,123 @@
 <h3 ng-hide="currUser">Oops! You need to be logged in to see this page</h3>
 <div ng-show="currUser">
 	<h1>Let's create an event!</h1>
-	<form>
-		<div class="form-group">
+	<form name="eventForm">
+		<div class="form-group required">
 		 	<label>What's the name of the event?</label>
-		 	<input type="title" class="form-control" ng-model="title" placeholder="Enter the event's name">
+		 	<input
+		 		type="title"
+		 		class="form-control"
+		 		ng-model="title"
+		 		placeholder="Enter the event's name"
+				required
+				autofocus
+		 	>
 	 	</div>
-		<div class="form-group">
+		<div class="form-group required">
 		 	<label>What kind of event is it?</label>
-		 	<input type="type" class="form-control" ng-model="type" placeholder="Enter the event's type">
+		 	<input
+		 		type="type"
+		 		class="form-control"
+		 		ng-model="type"
+		 		placeholder="Enter the event's type"
+				required
+		 	>
 	 	</div>
-		<div class="form-group">
+		<div class="form-group required">
 		 	<label>Whose hosting it?</label>
-		 	<input type="host" class="form-control" ng-model="host" placeholder="Enter the host's name">
+		 	<input
+		 		type="host"
+		 		class="form-control"
+		 		ng-model="host"
+		 		placeholder="Enter the host's name"
+		 		required
+		 	>
 	 	</div>
-		<div class="form-group">
+		<div class="form-group required">
 			<label>What's the start date?</label>
-			<input class="form-control" type="date" ng-model="startDate">
+			<input
+				class="form-control"
+				type="date"
+				ng-model="startDate"
+				required
+			>
 		</div>
-		<div class="form-group">
+		<div class="form-group required">
 			<label>What time does it start?</label>
-			<input class="form-control" type="time" ng-model="startTime">
+			<input
+				class="form-control"
+				type="time"
+				ng-model="startTime"
+				required
+			>
 		</div>
-		<div class="form-group">
+		<div class="form-group required">
 			<label>What's the end date?</label>
-			<input class="form-control" type="date" ng-model="endDate">
+			<input
+				class="form-control"
+				type="date"
+				ng-model="endDate"
+				required
+			>
 		</div>
-		<div class="form-group">
+		<div class="form-group required">
 			<label>What time does it end?</label>
-			<input class="form-control" type="time" ng-model="endTime">
+			<input
+				class="form-control"
+				type="time"
+				ng-model="endTime"
+				required
+			>
 		</div>
 		<div class="form-group">
+	    <div class="msg-block" ng-show="noGuests">
+	      <span class="msg-error">
+	        Please add at least one guest!
+	      </span>
+	    </div>
+	  </div>
+		<div class="form-group required">
 			<label>Whose on your guest list?</label>
 			<ul>
         <li ng-repeat="guest in guests">
           <span>{{guest}}</span>
         </li>
       </ul>
-			<input class="form-control" placeholder="Mr. Potato" type="text" ng-model="guest">
+			<input
+				class="form-control"
+				placeholder="Mr. Potato"
+				type="text"
+				ng-model="guest"
+			>
 		</div>
 		<div class="form-group">
-			<button ng-click="addGuest()" class="btn btn-success">Add Guest</button>
+			<a
+				id="add-guests"
+				name="add-guests"
+				ng-click="addGuest()"
+				class="btn btn-success"
+				ng-disabled="!guest"
+			>
+				Add Guest
+			</a>
 		</div>
-		<div class="form-group">
+		<div class="form-group required">
 			<label>Where is it going to be?</label>
-			<input class="form-control" ng-model="location">
+			<input class="form-control" ng-model="location" required>
 		</div>
 		<div class="form-group">
 			<label>Any additional info or message to the guests?</label>
 			<textarea class="form-control" ng-model="message"></textarea>
 		</div>
 		<div class="form-group">
-		 	<button ng-click="submitEvent()" type="submit" class="btn btn-primary">Submit</button>
+		 	<button
+		 		type="submit"
+		 		class="btn btn-primary"
+				ng-disabled="eventForm.$invalid || noGuests"
+				ng-click ="submitEvent()"
+		 	>
+		 		Submit
+		 	</button>
 		</div>
 	</form>
 </div>
