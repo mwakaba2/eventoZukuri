@@ -34,40 +34,80 @@
 		 		required
 		 	>
 	 	</div>
+	 	<div class="form-group">
+	    <div class="msg-block" ng-show="eventForm.$error">
+	      <span class="msg-error" ng-show="eventForm.startdate.$error.datevalid">
+	        Starting date is invalid!
+	      </span>
+	    </div>
+	  </div>
 		<div class="form-group required">
 			<label>What's the start date?</label>
 			<input
+				id="startdate"
+				name="startdate"
 				class="form-control"
 				type="date"
-				ng-model="startDate"
+				ng-model="startTime"
 				required
+				valid-date
 			>
 		</div>
+		<div class="form-group">
+	    <div class="msg-block" ng-show="eventForm.$error">
+	      <span class="msg-error" ng-show="eventForm.starttime.$error.datevalid">
+	        Starting time is invalid!
+	      </span>
+	    </div>
+	  </div>
 		<div class="form-group required">
 			<label>What time does it start?</label>
 			<input
+				id="starttime"
+				name="starttime"
 				class="form-control"
 				type="time"
 				ng-model="startTime"
 				required
+				valid-date
 			>
 		</div>
+		<div class="form-group">
+	    <div class="msg-block" ng-show="eventForm.$error">
+	      <span class="msg-error" ng-show="eventForm.enddate.$error.datevalid">
+	        Ending date is invalid!
+	      </span>
+	    </div>
+	  </div>
 		<div class="form-group required">
 			<label>What's the end date?</label>
 			<input
+				id="enddate"
+				name="enddate"
 				class="form-control"
 				type="date"
-				ng-model="endDate"
+				ng-model="endTime"
 				required
+				valid-date="startdate"
 			>
 		</div>
+		<div class="form-group">
+	    <div class="msg-block" ng-show="eventForm.$error">
+	      <span class="msg-error" ng-show="eventForm.endtime.$error.datevalid">
+	        Ending time is invalid!
+	      </span>
+	    </div>
+	  </div>
 		<div class="form-group required">
 			<label>What time does it end?</label>
 			<input
+				id="endtime"
+				name="endtime"
 				class="form-control"
 				type="time"
 				ng-model="endTime"
 				required
+				valid-date="starttime"
 			>
 		</div>
 		<div class="form-group">

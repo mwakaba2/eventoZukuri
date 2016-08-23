@@ -4,10 +4,8 @@ angular
 	.module('eventoZukuri')
 	.controller('CreateCtrl', ['$scope', '$firebaseObject', '$state', function ($scope, $firebaseObject, $state) {
 		$scope.currUser = firebase.auth().currentUser;
-		$scope.startDate = getDate();
-		$scope.endDate = getDate();
-		$scope.startTime = $scope.startDate;
-		$scope.endTime = $scope.endDate;
+		$scope.startTime = getDate();
+		$scope.endTime = getDate();
 		$scope.guests = [];
 		$scope.noGuests = true;
 		var userId;
