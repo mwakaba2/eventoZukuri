@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-	.module('eventoZukuri', ['firebase', 'ui.router'])
+	.module('eventoZukuri', ['firebase', 'ui.router', 'ngSanitize'])
 	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise('/');
 		$stateProvider
