@@ -1,7 +1,45 @@
-<h3 id="greeting" ng-show="currUser">Hi {{name}}!</h3>
-<a ng-hide="$state.current.name == 'home.events'" ui-sref="home.events">Home</a>
-<a ng-show="currUser" ng-click="home.signOut()">Signout</a>
-<a ng-hide="currUser" ui-sref="login">Login</a>
-<a ng-hide="currUser" ui-sref="register">Signup</a>
-<div ui-view="main"></div>
+<nav class="navbar navbar-inverse">
+  <div class="container header">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="home.events">EventoZukuri</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active">
+        	<a ng-hide="$state.current.name == 'home.events'" ui-sref="home.events">
+        		Home
+        		<span class="sr-only">(current)</span>
+        	</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a ng-hide="currUser" ui-sref="home.login">Login</a></li>
+        <li><a ng-hide="currUser" ui-sref="home.register">Signup</a></li>
+        <li class="dropdown" ng-show="currUser">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          	Hi {{name}}! <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a ng-click="home.signOut()">Signout</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <button class="btn btn-primary" ng-show="currUser" ui-sref="home.events.create_event">
+					Create Event
+				</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="container" ui-view="main"></div>
 

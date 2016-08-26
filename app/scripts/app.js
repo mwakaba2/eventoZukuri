@@ -42,14 +42,22 @@ angular
 					}
 				}
 			})
-			.state('login', {
-				url: '/login',
-				templateUrl: 'views/login.html',
-				controller: 'LoginCtrl as login',
+			.state('home.login', {
+				url: 'login',
+				views: {
+					'main@home': {
+						templateUrl: 'views/login.html',
+						controller: 'LoginCtrl as login',
+					}
+				}
 			})
-			.state('register', {
-				url: '/register',
-				templateUrl: 'views/register.html',
-				controller: 'RegisterCtrl as register',
+			.state('home.register', {
+				url: 'register',
+				views: {
+					'main@home': {
+						templateUrl: 'views/register.html',
+						controller: 'RegisterCtrl as register',
+					}
+				}
 			});
 	}]);
