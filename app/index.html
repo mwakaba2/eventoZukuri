@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>eventoZukuri</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp,app}) styles/main.css -->
@@ -16,20 +16,19 @@
     <!-- endbuild -->
   </head>
   <body ng-app="eventoZukuri">
-    <header>
-      <span class="app-title">EventoZukuri</span>
-    </header>
-    <div class="container-fluid">
+    <div>
         <div ui-view></div>
     </div>
     <!-- build:js scripts/vendor.js -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

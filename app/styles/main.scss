@@ -42,19 +42,3 @@ header {
     content: ' *';
     display:inline;
 }
-
-@media screen and (max-width: 450px) {
-	.app-title {
-		display: block;
-		width: 230px;
-		margin: 0 auto;
-		text-align: center;
-	}
-}
-
-@media screen and (min-width: 451px) {
-	.app-title {
-		display: inline;
-	}
-}
-
