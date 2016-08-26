@@ -4,6 +4,7 @@ angular
 	.module('eventoZukuri')
 	.controller('HomeCtrl', ['$scope', '$firebaseObject', '$firebaseArray', '$state', function ($scope, $firebaseObject, $firebaseArray, $state) {
 		$scope.currUser = firebase.auth().currentUser;
+		$scope.$state = $state;
 		if($scope.currUser) {
 			var userId = $scope.currUser.uid;
 			firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {

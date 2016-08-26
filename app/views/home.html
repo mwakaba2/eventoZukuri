@@ -1,4 +1,5 @@
 <h3 id="greeting" ng-show="currUser">Hi {{name}}!</h3>
+<a ng-hide="$state.current.name == 'home.events'" ui-sref="home.events">Home</a>
 <a ng-show="currUser" ng-click="home.signOut()">Signout</a>
 <a ng-hide="currUser" ui-sref="login">Login</a>
 <a ng-hide="currUser" ui-sref="register">Signup</a>
