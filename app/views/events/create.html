@@ -34,79 +34,47 @@
 		 	>
 	 	</div>
 	 	<div class="form-group">
-	    <div class="msg-block" ng-show="eventForm.$error">
-	      <span class="msg-error" ng-show="eventForm.startdate.$error.datevalid">
-	        Starting date is invalid!
+	    <div class="msg-block" ng-show="eventForm.starttime.$error">
+	      <span class="msg-error" ng-show="eventForm.starttime.$error.datetimelocal">
+	        Not a valid start date!
+	      </span>
+	      <span class="msg-error" ng-show="eventForm.starttime.$error.min">
+	        Must be in the future!
 	      </span>
 	    </div>
 	  </div>
 		<div class="form-group required">
 			<label>What's the start date?</label>
 			<input
-				id="startdate"
-				name="startdate"
 				class="form-control"
-				type="date"
-				ng-model="startTime"
-				required
-				valid-date
-			>
-		</div>
-		<div class="form-group">
-	    <div class="msg-block" ng-show="eventForm.$error">
-	      <span class="msg-error" ng-show="eventForm.starttime.$error.datevalid">
-	        Starting time is invalid!
-	      </span>
-	    </div>
-	  </div>
-		<div class="form-group required">
-			<label>What time does it start?</label>
-			<input
-				id="starttime"
 				name="starttime"
-				class="form-control"
-				type="time"
+				type="datetime-local"
+				placeholder="yyyy-MM-ddTHH:mm:ss"
+				min="{{currentDate | date:'yyyy-MM-ddTHH:mm:ss'}}"
 				ng-model="startTime"
 				required
-				valid-date
 			>
 		</div>
-		<div class="form-group">
-	    <div class="msg-block" ng-show="eventForm.$error">
-	      <span class="msg-error" ng-show="eventForm.enddate.$error.datevalid">
-	        Ending date is invalid!
+	  <div class="form-group">
+	    <div class="msg-block" ng-show="eventForm.endtime.$error">
+	      <span class="msg-error" ng-show="eventForm.endtime.$error.datetimelocal">
+	        Not a valid end date!
+	      </span>
+	      <span class="msg-error" ng-show="eventForm.endtime.$error.min">
+	        Must be in the future!
 	      </span>
 	    </div>
 	  </div>
 		<div class="form-group required">
 			<label>What's the end date?</label>
 			<input
-				id="enddate"
-				name="enddate"
 				class="form-control"
-				type="date"
-				ng-model="endTime"
-				required
-				valid-date="startdate"
-			>
-		</div>
-		<div class="form-group">
-	    <div class="msg-block" ng-show="eventForm.$error">
-	      <span class="msg-error" ng-show="eventForm.endtime.$error.datevalid">
-	        Ending time is invalid!
-	      </span>
-	    </div>
-	  </div>
-		<div class="form-group required">
-			<label>What time does it end?</label>
-			<input
-				id="endtime"
 				name="endtime"
-				class="form-control"
-				type="time"
+				type="datetime-local"
+				placeholder="yyyy-MM-ddTHH:mm:ss"
+				min="{{currentDate | date:'yyyy-MM-ddTHH:mm:ss'}}"
 				ng-model="endTime"
 				required
-				valid-date="starttime"
 			>
 		</div>
 		<div class="form-group">

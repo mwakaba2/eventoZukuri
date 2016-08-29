@@ -14,6 +14,7 @@ angular
 				});
 			}
 		});
+		$scope.currentDate = getDate();
 		$scope.startTime = getDate();
 		$scope.endTime = getDate();
 		$scope.guests = [];
