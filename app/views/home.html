@@ -22,19 +22,19 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a ng-hide="currUser" ui-sref="home.login">Login</a></li>
-        <li><a ng-hide="currUser" ui-sref="home.register">Signup</a></li>
-        <li class="dropdown" ng-show="currUser">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          	Hi {{name}}! <span class="caret"></span>
+        <li><a ng-hide="isLoggedIn" ui-sref="home.login">Login</a></li>
+        <li><a ng-hide="isLoggedIn" ui-sref="home.register">Signup</a></li>
+        <li class="dropdown" ng-show="isLoggedIn">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          	Hi {{userName}}! <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a ng-click="home.signOut()">Signout</a></li>
+            <li><a ng-click="logout()">Signout</a></li>
           </ul>
         </li>
       </ul>
       <form class="navbar-form navbar-right">
-        <button class="btn btn-primary" ng-show="currUser" ui-sref="home.events.create_event">
+        <button class="btn btn-primary" ng-show="isLoggedIn" ui-sref="home.events.create_event">
 					Create Event
 				</button>
       </form>

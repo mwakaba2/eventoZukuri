@@ -1,5 +1,4 @@
 <h1 id="title">Events</h1>
-<button ng-show="currUser" ui-sref="home.events.create_event">Create Event</button>
 <div ng-repeat="event in events">
 	<a ui-sref="home.events.event_selected({event_id: event.eventKey})"><h2>{{event.title}}</h2></a>
 </div>

@@ -2,11 +2,9 @@
 
 angular
 	.module('eventoZukuri')
-	.controller('LoginCtrl', ['$state', '$firebaseObject', '$scope', function ($state, $firebaseObject, $scope) {
-		var ref = firebase.database().ref();
-		this.data = $firebaseObject(ref);
-		$scope.signIn = function() {
-			firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password).then(function() {
+	.controller('LoginCtrl', function ($state, $scope, AuthService) {
+		$scope.logIn= function() {
+			AuthService.login($scope.email, $scope.password).then(function() {
 				$state.go('home.events');
 			}).catch(function(error) {
 				// Handle Errors here.
@@ -14,4 +12,4 @@ angular
 				$scope.errorMessage = error.message;
 			});
 		};
-	}]);
+	});

@@ -2,20 +2,22 @@
 
 angular
 	.module('eventoZukuri')
-	.controller('CreateCtrl', ['$scope', '$firebaseObject', '$state', function ($scope, $firebaseObject, $state) {
-		$scope.currUser = firebase.auth().currentUser;
+	.controller('CreateCtrl', function ($scope, $state, AuthService) {
+		$scope.$watch( AuthService.isLoggedIn, function (isLoggedIn) {
+			$scope.isLoggedIn = isLoggedIn;
+			$scope.currentUser = AuthService.currentUser();
+			$scope.userId = AuthService.userId();
+			if($scope.currentUser) {
+				$scope.currentUser.then(function(userInfo) {
+					$scope.userName = userInfo.name;
+					$scope.$apply();
+				});
+			}
+		});
 		$scope.startTime = getDate();
 		$scope.endTime = getDate();
 		$scope.guests = [];
 		$scope.noGuests = true;
-		var userId;
-
-		if($scope.currUser) {
-			userId = $scope.currUser.uid;
-			firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-				$scope.name = snapshot.val().name;
-			});
-		}
 
 		$scope.addGuest = function() {
 			if($scope.guest) {
@@ -27,7 +29,7 @@ angular
 
 		$scope.submitEvent = function() {
 			if($scope.guests.length > 0) {
-				var eventKey = writeNewEvent(userId);
+				var eventKey = writeNewEvent($scope.userId);
 				$state.go('home.events.event_selected', { 'event_id': eventKey });
 			} else {
 				$scope.noGuests = true;
@@ -67,4 +69,4 @@ angular
 			firebase.database().ref().update(updates);
 			return newEventKey;
 		}
-	}]);
+	});
