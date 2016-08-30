@@ -1,4 +1,24 @@
-<h1 id="title">Events</h1>
-<div ng-repeat="event in events">
-	<a ui-sref="home.events.event_selected({event_id: event.eventKey})"><h2>{{event.title}}</h2></a>
+<div class="col-md-6 col-md-offset-3">
+	<div class="row">
+		<h1 class="text-center" id="title">Events</h1>
+		<ul class="media-list" ng-repeat="event in events">
+			<a class="a-unstyled" ui-sref="home.events.event_selected({event_id: event.eventKey})">
+				<li class="media">
+					<div class="media-left">
+				    <img class="pull-left list-img" src="images/event_icon.png" alt="Event Icon">
+					</div>
+					<div class="media-body">
+				    <h4 class="media-heading">{{event.title}}</h4>
+				    <h6>{{event.type}}</h6>
+				    <p>
+				    	<h5>
+				    		{{event.start_time | date:'MM/dd/yyyy @ h:mma'}} ~ {{event.end_time | date:'MM/dd/yyyy @ h:mma'}}
+				    	</h5>
+				    	{{event.message}}
+				    </p>
+				  </div>
+			  </li>
+		  </a>
+		</ul>
+	</div>
 </div>

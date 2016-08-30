@@ -1,10 +1,26 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+$unstyledAColor: #333;
+$unstyledAColorHover: #000;
+$unstyledAColorInverse: #969696;
+$unstyledAColorInverseHover: #FFF;
 
 @import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 
 body {
 	font-family: 'Open Sans', sans-serif;
 	margin: 0px 0px 10px 0px;
+}
+
+// Links
+.a-unstyled {
+    color: $unstyledAColor;
+    &:link { color: $unstyledAColor; }
+    &:visited { color: $unstyledAColor; }
+    &:hover {
+    	color: $unstyledAColorHover;
+    	text-decoration: none;
+    }
+    &:active { color: $unstyledAColor; }
 }
 
 .required label {
@@ -14,4 +30,14 @@ body {
     color: #e32;
     content: ' *';
     display:inline;
+}
+
+.list-img {
+	width: 64px;
+	height: 64px;
+}
+
+.media {
+	padding: 10px;
+	border: #ddd 3px solid;
 }
