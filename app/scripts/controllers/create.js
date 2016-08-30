@@ -47,7 +47,7 @@ angular
 		function writeNewEvent(uid) {
 			// A post entry.
 			var eventData = {
-				author: $scope.name,
+				author: $scope.userName,
 				uid: uid,
 				title: $scope.title,
 				type: $scope.type,

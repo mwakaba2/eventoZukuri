@@ -15,15 +15,13 @@
     <input type="email" class="form-control" ng-model="email" required autocomplete="email"/>
   </div>
   <div class="form-group">
-    <div class="msg-block" ng-show="signupForm.$error">
-      <span class="msg-error" ng-show="signupForm.pass1.$error.pwinvalid">
-        <ul>
-          <li>Must be at least 8 characters long</li>
-          <li>Must include at least one uppercase letter</li>
-          <li>Must include at least one special letter</li>
-          <li>Must include at least one number</li>
-        </ul>
-      </span>
+    <div class="alert alert-danger" role="alert" ng-show="signupForm.pass1.$error.pwinvalid">
+      <ul>
+        <li>Must be at least 8 characters long</li>
+        <li>Must include at least one uppercase letter</li>
+        <li>Must include at least one special letter</li>
+        <li>Must include at least one number</li>
+      </ul>
     </div>
   </div>
   <div class="form-group required">
@@ -39,10 +37,8 @@
     />
   </div>
   <div class="form-group">
-    <div class="msg-block" ng-show="signupForm.$error">
-      <span class="msg-error" ng-show="signupForm.pass2.$error.pwmatch">
-        Passwords don't match.
-      </span>
+    <div class="alert alert-danger" role="alert" ng-show="signupForm.pass2.$error.pwmatch">
+      Passwords don't match.
     </div>
   </div>
   <div class="form-group required">

@@ -1,0 +1,27 @@
+<div class="col-md-8 col-md-offset-2">
+	<div class="text-center row">
+		<h1>{{event.title}}</h1>
+		<h3>{{event.type}}</h3>
+		<h3>Hosted by {{event.host}}</h3>
+		<img src="images/event_icon.png" alt="Event Icon" class="img-rounded">
+		<div class="text-left">
+			<div class="well">
+				<h5><strong>When does it start?</strong></h5>
+				<h5>{{event.start_time | date:'MM/dd/yyyy @ h:mma'}}</h5>
+				<h5><strong>When does it end?</strong></h5>
+				<h5>{{event.end_time | date:'MM/dd/yyyy @ h:mma'}}</h5>
+				<h5><strong>Where is it at?</strong></h5>
+				<h5>{{event.location}}</h5>
+				<h5 ng-show="event.message"><strong>Message from {{event.host}}</strong></h5>
+				<p>{{event.message}}</p>
+			</div>
+			<div class="panel panel-default">
+			  <div class="panel-heading"><strong>Guest List</strong></div>
+				<ul class="list-group" ng-repeat="guest in event.guest_list">
+					<li class="list-group-item">{{guest}}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+

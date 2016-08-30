@@ -34,13 +34,13 @@
 		 	>
 	 	</div>
 	 	<div class="form-group">
-	    <div class="msg-block" ng-show="eventForm.starttime.$error">
-	      <span class="msg-error" ng-show="eventForm.starttime.$error.datetimelocal">
+	    <div ng-show="eventForm.starttime.$error">
+	      <div class="alert alert-danger" role="alert" ng-show="eventForm.starttime.$error.datetimelocal">
 	        Not a valid start date!
-	      </span>
-	      <span class="msg-error" ng-show="eventForm.starttime.$error.min">
+	      </div>
+	      <div class="alert alert-danger" role="alert" ng-show="eventForm.starttime.$error.min">
 	        Must be in the future!
-	      </span>
+	      </div>
 	    </div>
 	  </div>
 		<div class="form-group required">
@@ -56,13 +56,13 @@
 			>
 		</div>
 	  <div class="form-group">
-	    <div class="msg-block" ng-show="eventForm.endtime.$error">
-	      <span class="msg-error" ng-show="eventForm.endtime.$error.datetimelocal">
+	    <div ng-show="eventForm.endtime.$error">
+	      <div class="alert alert-danger" role="alert" ng-show="eventForm.endtime.$error.datetimelocal">
 	        Not a valid end date!
-	      </span>
-	      <span class="msg-error" ng-show="eventForm.endtime.$error.min">
+	      </div>
+	      <div class="alert alert-danger" role="alert" ng-show="eventForm.endtime.$error.min">
 	        Must be in the future!
-	      </span>
+	      </div>
 	    </div>
 	  </div>
 		<div class="form-group required">
@@ -78,10 +78,10 @@
 			>
 		</div>
 		<div class="form-group">
-	    <div class="msg-block" ng-show="noGuests">
-	      <span class="msg-error">
+	    <div ng-show="noGuests">
+	      <div class="alert alert-danger" role="alert">
 	        Please add at least one guest!
-	      </span>
+	      </div>
 	    </div>
 	  </div>
 		<div class="form-group required">
