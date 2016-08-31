@@ -3,8 +3,9 @@
 	<h1>Let's create an event!</h1>
 	<form name="eventForm">
 		<div class="form-group required">
-		 	<label>What's the name of the event?</label>
+		 	<label for="title">What's the name of the event?</label>
 		 	<input
+		 		id="title"
 		 		type="title"
 		 		class="form-control"
 		 		ng-model="title"
@@ -14,8 +15,9 @@
 		 	>
 	 	</div>
 		<div class="form-group required">
-		 	<label>What kind of event is it?</label>
+		 	<label for="type">What kind of event is it?</label>
 		 	<input
+			 	id="type"
 		 		type="type"
 		 		class="form-control"
 		 		ng-model="type"
@@ -24,8 +26,9 @@
 		 	>
 	 	</div>
 		<div class="form-group required">
-		 	<label>Whose hosting it?</label>
+		 	<label for="host">Whose hosting it?</label>
 		 	<input
+		 		id="host"
 		 		type="host"
 		 		class="form-control"
 		 		ng-model="host"
@@ -45,8 +48,9 @@
 	    </div>
 	  </div>
 		<div class="form-group required">
-			<label>What's the start date?</label>
+			<label for="start-date">What's the start date?</label>
 			<input
+				id="start-date"
 				class="form-control"
 				name="starttime"
 				type="datetime-local"
@@ -67,8 +71,9 @@
 	    </div>
 	  </div>
 		<div class="form-group required">
-			<label>What's the end date?</label>
+			<label for="end-date">What's the end date?</label>
 			<input
+				id="end-date"
 				class="form-control"
 				name="endtime"
 				type="datetime-local"
@@ -86,13 +91,14 @@
 	    </div>
 	  </div>
 		<div class="form-group required">
-			<label>Whose on your guest list?</label>
+			<label for="guest-list">Whose on your guest list?</label>
 			<ul>
         <li ng-repeat="guest in guests">
           <span>{{guest}}</span>
         </li>
       </ul>
 			<input
+				id="guest-list"
 				class="form-control"
 				placeholder="Mr. Potato"
 				type="text"
@@ -111,12 +117,12 @@
 			</a>
 		</div>
 		<div class="form-group required">
-			<label>Where is it going to be?</label>
-			<input class="form-control" ng-model="location" required>
+			<label for="location">Where is it going to be?</label>
+			<input id="location" class="form-control" ng-model="location" required>
 		</div>
 		<div class="form-group">
-			<label>Any additional info or message to the guests?</label>
-			<textarea class="form-control" ng-model="message"></textarea>
+			<label for="info">Any additional info or message to the guests?</label>
+			<textarea id="info" class="form-control" ng-model="message"></textarea>
 		</div>
 		<div class="form-group">
 		 	<button

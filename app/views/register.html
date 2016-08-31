@@ -1,7 +1,8 @@
 <form name="signupForm">
   <div class="form-group required">
-    <label>What's you name?</label>
+    <label for="name">What's you name?</label>
     <input
+      id="name"
       type="text"
       class="form-control"
       ng-model="name"
@@ -11,8 +12,8 @@
     />
   </div>
   <div class="form-group required">
-    <label>What's your email address?</label>
-    <input type="email" class="form-control" ng-model="email" required autocomplete="email"/>
+    <label for="email">What's your email address?</label>
+    <input id="email" type="email" class="form-control" ng-model="email" required autocomplete="email"/>
   </div>
   <div class="form-group">
     <div class="alert alert-danger" role="alert" ng-show="signupForm.pass1.$error.pwinvalid">
@@ -25,7 +26,7 @@
     </div>
   </div>
   <div class="form-group required">
-    <label>Let's create a password!</label>
+    <label for="pass1">Let's create a password!</label>
     <input
       type="password"
       id="pass1"
@@ -42,7 +43,7 @@
     </div>
   </div>
   <div class="form-group required">
-    <label>Let's confirm your password</label>
+    <label for="pass2">Let's confirm your password</label>
     <input
       type="password"
       id="pass2"
@@ -54,8 +55,9 @@
     />
   </div>
   <div class="form-group">
-    <label>Who do you work for?</label>
+    <label for="company">Who do you work for?</label>
     <input
+      id="company"
       type="text"
       class="form-control"
       ng-model="employer"
@@ -63,8 +65,9 @@
     />
   </div>
   <div class="form-group">
-    <label>What do you do?</label>
+    <label for="job">What do you do?</label>
     <input
+      id="job"
       type="text"
       class="form-control"
       ng-model="jobTitle"
@@ -72,8 +75,8 @@
     />
   </div>
   <div class="form-group">
-    <label>Birthday</label>
-    <input type="date" class="form-control" ng-model="bday"/>
+    <label for="bday">Birthday</label>
+    <input id="bday" type="date" class="form-control" ng-model="bday"/>
   </div>
   <div class="form-group">
     <button
