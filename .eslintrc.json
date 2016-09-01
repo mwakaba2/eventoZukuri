@@ -2,6 +2,11 @@
     "env": {
         "browser": true
     },
+    "globals": {
+        "angular": 1,
+        "firebase": 1,
+        "$": 1
+    },
     "extends": "eslint:recommended",
     "rules": {
         "indent": [

@@ -7,14 +7,11 @@ angular.module('eventoZukuri')
 
 		this.signUp = function () {
 			firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.pass1).then(function(user) {
-				console.log('Creating user: ', user.uid);
 				saveUser(user.uid);
 				$state.go('home.events');
 			}).catch(function(error) {
 				// Handle Errors here.
-				var errorCode = error.code;
-				var errorMessage = error.message;
-				console.log('Signing up failed: ', errorMessage);
+				$scope.errorMessage = error.message;
 			});
 		};
 

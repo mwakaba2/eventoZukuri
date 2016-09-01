@@ -18,14 +18,11 @@ angular
 		$scope.logout = function() {
 			AuthService.logout().then(function() {
 				// Sign-out successful.
-				console.log("Successfully signed out!");
 				if($state.is('home.events.create_event')) {
 					$state.go('home.events');
 				} else {
 					$scope.$apply();
 				}
-			}, function(error) {
-					// An error happened.
 			});
 		};
 	});

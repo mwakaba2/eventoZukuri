@@ -13,7 +13,7 @@ angular
 				return firebase.auth().signOut();
 			},
 			isLoggedIn: function() {
-				if (currentUser = firebase.auth().currentUser) {
+				if ((currentUser = firebase.auth().currentUser)) {
 					return true;
 				}
 				return false;

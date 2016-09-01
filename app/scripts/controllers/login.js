@@ -8,7 +8,6 @@ angular
 				$state.go('home.events');
 			}).catch(function(error) {
 				// Handle Errors here.
-				var errorCode = error.code;
 				$scope.errorMessage = error.message;
 			});
 		};
