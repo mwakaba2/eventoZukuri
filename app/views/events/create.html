@@ -6,6 +6,7 @@
 		 	<label for="title">What's the name of the event?</label>
 		 	<input
 		 		id="title"
+		 		name="title"
 		 		type="title"
 		 		class="form-control"
 		 		ng-model="title"
@@ -14,6 +15,11 @@
 				autofocus
 		 	>
 	 	</div>
+	 	<div class="form-group" ng-messages="eventForm.title.$error">
+	    <div class="alert alert-danger" role="alert" ng-message="required">
+	      Please enter the name of the event.
+	    </div>
+	  </div>
 		<div class="form-group required">
 		 	<label for="type">What kind of event is it?</label>
 		 	<input
@@ -29,6 +35,7 @@
 		 	<label for="host">Whose hosting it?</label>
 		 	<input
 		 		id="host"
+		 		name="host"
 		 		type="host"
 		 		class="form-control"
 		 		ng-model="host"
@@ -37,6 +44,11 @@
 		 		autocomplete="name"
 		 	>
 	 	</div>
+	 	<div class="form-group" ng-messages="eventForm.host.$error">
+	    <div class="alert alert-danger" role="alert" ng-message="required">
+	      Please enter the host of the event.
+	    </div>
+	  </div>
 	 	<div class="form-group">
 	    <div ng-show="eventForm.starttime.$error">
 	      <div class="alert alert-danger" role="alert" ng-show="eventForm.starttime.$error.datetimelocal">
@@ -83,13 +95,6 @@
 				required
 			>
 		</div>
-		<div class="form-group">
-	    <div ng-show="noGuests">
-	      <div class="alert alert-danger" role="alert">
-	        Please add at least one guest!
-	      </div>
-	    </div>
-	  </div>
 		<div class="form-group required">
 			<label for="guest-list">Whose on your guest list?</label>
 			<ul>
@@ -106,6 +111,13 @@
 			>
 		</div>
 		<div class="form-group">
+	    <div ng-show="noGuests">
+	      <div class="alert alert-danger" role="alert">
+	        Please add at least one guest!
+	      </div>
+	    </div>
+	  </div>
+		<div class="form-group">
 			<a
 				id="add-guests"
 				name="add-guests"
@@ -118,8 +130,13 @@
 		</div>
 		<div class="form-group required">
 			<label for="location">Where is it going to be?</label>
-			<input id="location" class="form-control" ng-model="location" required>
+			<input id="location" name="location" class="form-control" ng-model="location" required>
 		</div>
+		<div class="form-group" ng-messages="eventForm.location.$error">
+	    <div class="alert alert-danger" role="alert" ng-message="required">
+	      Please enter the location.
+	    </div>
+	  </div>
 		<div class="form-group">
 			<label for="info">Any additional info or message to the guests?</label>
 			<textarea id="info" class="form-control" ng-model="message"></textarea>
