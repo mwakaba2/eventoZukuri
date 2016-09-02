@@ -1,11 +1,8 @@
-'use strict';
-
 angular.module('eventoZukuri')
-	.controller('RegisterCtrl', ['$state', '$firebaseObject', '$scope', function ($state, $firebaseObject, $scope) {
-		var ref = firebase.database().ref();
-		this.data = $firebaseObject(ref);
+	.controller('RegisterCtrl', function ($state, $scope) {
+		'use strict';
 
-		this.signUp = function () {
+		$scope.signUp = function () {
 			firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.pass1).then(function(user) {
 				saveUser(user.uid);
 				$state.go('home.events');
@@ -29,5 +26,5 @@ angular.module('eventoZukuri')
 			});
 		}
 
-	}]);
+	});
 

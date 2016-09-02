@@ -1,22 +1,53 @@
 <form name="signupForm">
   <div class="form-group">
-    <div class="alert alert-danger" role="alert" ng-show="errorMessage" ng-bind-html="errorMessage"></span>
+    <div class="alert alert-danger" role="alert" ng-show="errorMessage" ng-bind-html="errorMessage"></div>
   </div>
   <div class="form-group required">
     <label for="name">What's you name?</label>
     <input
       id="name"
+      name="name"
       type="text"
       class="form-control"
       ng-model="name"
+      autocomplete="name"
       required
       autofocus
-      autocomplete="name"
     />
+  </div>
+  <div class="form-group" ng-messages="signupForm.name.$error">
+    <div class="alert alert-danger" role="alert" ng-message="required">
+      You did not enter a name
+    </div>
   </div>
   <div class="form-group required">
     <label for="email">What's your email address?</label>
-    <input id="email" type="email" class="form-control" ng-model="email" required autocomplete="email"/>
+    <input id="email" name="email" type="email" class="form-control" ng-model="email" required autocomplete="email"/>
+  </div>
+  <div class="form-group" ng-messages="signupForm.email.$error">
+    <div class="alert alert-danger" role="alert" ng-message="required">
+      You did not enter an email address
+    </div>
+    <div class="alert alert-danger" role="alert" ng-message="email">
+      You did not enter a valid email address
+    </div>
+  </div>
+  <div class="form-group required">
+    <label for="pass1">Let's create a password!</label>
+    <input
+      type="password"
+      id="pass1"
+      name="pass1"
+      class="form-control"
+      ng-model="pass1"
+      required
+      pw-valid
+    />
+  </div>
+  <div class="form-group" ng-messages="signupForm.pass1.$error">
+    <div class="alert alert-danger" role="alert" ng-message="required">
+      You did not enter a password
+    </div>
   </div>
   <div class="form-group">
     <div class="alert alert-danger" role="alert" ng-show="signupForm.pass1.$error.pwinvalid">
@@ -29,23 +60,6 @@
     </div>
   </div>
   <div class="form-group required">
-    <label for="pass1">Let's create a password!</label>
-    <input
-      type="password"
-      id="pass1"
-      name="pass1"
-      class="form-control"
-      ng-model="pass1"
-      ng-required=""
-      pw-valid
-    />
-  </div>
-  <div class="form-group">
-    <div class="alert alert-danger" role="alert" ng-show="signupForm.pass2.$error.pwmatch">
-      Passwords don't match.
-    </div>
-  </div>
-  <div class="form-group required">
     <label for="pass2">Let's confirm your password</label>
     <input
       type="password"
@@ -53,9 +67,14 @@
       name="pass2"
       class="form-control"
       ng-model="pass2"
-      ng-required=""
+      required
       pw-check="pass1"
     />
+  </div>
+  <div class="form-group">
+    <div class="alert alert-danger" role="alert" ng-show="signupForm.pass2.$error.pwmatch">
+      Passwords don't match.
+    </div>
   </div>
   <div class="form-group">
     <label for="company">Who do you work for?</label>
@@ -83,7 +102,7 @@
   </div>
   <div class="form-group">
     <button
-      ng-click="register.signUp()"
+      ng-click="signUp()"
       ng-disabled="signupForm.$pristine || signupForm.$invalid"
       type="submit"
       class="btn btn-primary"
