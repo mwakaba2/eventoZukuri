@@ -7,6 +7,7 @@
 		<input
 			class="form-control"
 			id="email"
+			name="email"
 			type="email"
 			ng-model="email"
 			required
@@ -14,21 +15,35 @@
 			autocomplete="email"
 		/>
 	</div>
+	<div class="form-group" ng-messages="loginForm.email.$error">
+    <div class="alert alert-danger" role="alert" ng-message="required">
+      You did not enter an email address
+    </div>
+    <div class="alert alert-danger" role="alert" ng-message="email">
+      Please enter a valid email address
+    </div>
+  </div>
 	<div class="form-group required">
 		<label for="password">Password</label>
 		<input
 			class="form-control"
+			name="password"
 			id="password"
 			type="password"
 			ng-model="password"
 			required
 		/>
 	</div>
+	<div class="form-group" ng-messages="loginForm.password.$error">
+    <div class="alert alert-danger" role="alert" ng-message="required">
+      You did not enter a password
+    </div>
+  </div>
 	<div class="form-group">
 		<button class="btn btn-primary" ng-click="logIn()">
 			Login
 		</button>
-		<button class="btn btn-success" ui-sref="register">
+		<button class="btn btn-success" ui-sref="home.register">
     	Signup
     </button>
 	</div>
