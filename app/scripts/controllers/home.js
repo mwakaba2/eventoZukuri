@@ -7,8 +7,9 @@ angular
 		$scope.$watch( AuthService.isLoggedIn, function (isLoggedIn) {
 			$scope.isLoggedIn = isLoggedIn;
 			$scope.currentUser = AuthService.currentUser();
-			if($scope.currentUser) {
-				$scope.currentUser.then(function(userInfo) {
+			if($scope.isLoggedIn) {
+				$scope.currentUser.then(function(data) {
+					var userInfo = data.val();
 					$scope.userName = userInfo.name;
 					$scope.$apply();
 				});
