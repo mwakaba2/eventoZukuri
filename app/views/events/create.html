@@ -22,15 +22,21 @@
 	  </div>
 		<div class="form-group required">
 		 	<label for="type">What kind of event is it?</label>
-		 	<input
-			 	id="type"
-		 		type="type"
+		 	<select
+		 		name="type"
+		 		id="type"
 		 		class="form-control"
-		 		ng-model="type"
-		 		placeholder="Enter the event's type"
-				required
-		 	>
+		 		ng-model="selectedType"
+        ng-options="type as type.name for type in types"
+        required>
+        <option value="">-- please select type --</option>
+		  </select>
 	 	</div>
+	 	<div class="form-group" ng-messages="eventForm.type.$error">
+	    <div class="alert alert-danger" role="alert" ng-message="required">
+	      Please enter the type of the event.
+	    </div>
+	  </div>
 		<div class="form-group required">
 		 	<label for="host">Whose hosting it?</label>
 		 	<input

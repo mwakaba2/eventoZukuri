@@ -7,8 +7,9 @@ angular
 			$scope.isLoggedIn = isLoggedIn;
 			$scope.currentUser = AuthService.currentUser();
 			$scope.userId = AuthService.userId();
-			if($scope.currentUser) {
-				$scope.currentUser.then(function(userInfo) {
+			if($scope.isLoggedIn) {
+				$scope.currentUser.then(function(data) {
+					var userInfo = data.val();
 					$scope.userName = userInfo.name;
 					$scope.$apply();
 				});
@@ -19,6 +20,27 @@ angular
 		$scope.endTime = getDate();
 		$scope.guests = [];
 		$scope.noGuests = true;
+		$scope.types = [
+			{value: 'Award Ceremony' , name: 'Award Ceremony'},
+			{value: 'Birthday', name: 'Birthday'},
+			{value: 'Business Dinner', name: 'Business Dinner'},
+			{value: 'Conference', name: 'Conference'},
+			{value: 'Family Event', name: 'Family Event'},
+			{value: 'Golf Event', name: 'Golf Gvent'},
+			{value: 'Meeting', name: 'Meeting'},
+			{value: 'Opening Ceremony', name: 'Opening Ceremony'},
+			{value: 'Press Conference', name: 'Press Conference'},
+			{value: 'Product Launch', name: 'Product Launch'},
+			{value: 'Seminar', name: 'Seminar'},
+			{value: 'Team Building Event', name: 'Team Building Event'},
+			{value: 'Trade Fair', name: 'Trade Fair'},
+			{value: 'Trade Show', name: 'Trade Show'},
+			{value: 'Networking Event', name: 'Networking Event'},
+			{value: 'Vip Event', name: 'Vip Event'},
+			{value: 'Wedding', name: 'Wedding'},
+			{value: 'Wedding Anniversary', name: 'Wedding Anniversary'}
+		];
+		$scope.selectedType = null;
 
 		$scope.addGuest = function() {
 			if($scope.guest) {
@@ -50,7 +72,7 @@ angular
 				author: $scope.userName,
 				uid: uid,
 				title: $scope.title,
-				type: $scope.type,
+				type: $scope.selectedType.value,
 				host: $scope.host,
 				start_time: $scope.startTime,
 				end_time: $scope.endTime,
