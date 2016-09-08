@@ -34,6 +34,7 @@
     <!-- endbuild -->
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/firebase.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/directives/autofocus.js"></script>
     <script src="scripts/directives/pwcheck.js"></script>
@@ -45,17 +46,6 @@
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/register.js"></script>
     <script src="scripts/services/authservice.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-					apiKey: 'AIzaSyAkf_8iuJEii40V0DzFaeVJ9LnpjmCbi64',
-					authDomain: 'eventozukuri-9783f.firebaseapp.com',
-					databaseURL: 'https://eventozukuri-9783f.firebaseio.com',
-					storageBucket: 'eventozukuri-9783f.appspot.com',
-        };
-        firebase.initializeApp(config);
-    </script>
     <!-- inject:partials -->
     <!-- endinject -->
     <!-- endbuild -->

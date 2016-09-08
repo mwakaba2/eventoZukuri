@@ -39,12 +39,6 @@ gulp.task('serve', ['watch'], function () {
   browserSyncInit([
     'app',
     '.tmp'
-  ], [
-    'app/*.html',
-    '.tmp/styles/**/*.css',
-    'app/scripts/**/*.js',
-    'app/partials/**/*.html',
-    'app/images/**/*'
   ]);
 });
 

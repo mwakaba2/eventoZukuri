@@ -47,15 +47,9 @@ gulp.task('partials', function () {
 gulp.task('html', ['styles', 'scripts', 'partials'], function () {
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');
-
-  return gulp.src('app/*.html')
-    .pipe($.inject(gulp.src('.tmp/partials/**/*.js'), {
-      read: false,
-      starttag: '<!-- inject:partials -->',
-      addRootSlash: false,
-      addPrefix: '../'
-    }))
-    .pipe($.useref.assets())
+  var assets = $.useref.assets({searchPath: '{.tmp,app}'});
+  return gulp.src('app/**/*.html')
+    .pipe(assets)
     .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
@@ -65,7 +59,7 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
     .pipe($.replace('bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap','fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
-    .pipe($.useref.restore())
+    .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(gulp.dest('dist'))
@@ -74,11 +68,12 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
 
 gulp.task('images', function () {
   return gulp.src('app/images/**/*')
-    .pipe($.cache($.imagemin({
-      optimizationLevel: 3,
-      progressive: true,
-      interlaced: true
-    })))
+    .pipe($.filter('*.{jpg,jpeg,svg,gif,png}'))
+    .pipe($.imagemin({
+        optimizationLevel: 3,
+        progressive: true,
+        interlaced: true
+    }))
     .pipe(gulp.dest('dist/images'))
     .pipe($.size());
 });
