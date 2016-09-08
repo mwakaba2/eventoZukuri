@@ -55,16 +55,6 @@
 	      Please enter the host of the event.
 	    </div>
 	  </div>
-	 	<div class="form-group">
-	    <div ng-show="eventForm.starttime.$error">
-	      <div class="alert alert-danger" role="alert" ng-show="eventForm.starttime.$error.datetimelocal">
-	        Not a valid start date!
-	      </div>
-	      <div class="alert alert-danger" role="alert" ng-show="eventForm.starttime.$error.min">
-	        Must be in the future!
-	      </div>
-	    </div>
-	  </div>
 		<div class="form-group required">
 			<label for="start-date">What's the start date?</label>
 			<input
@@ -72,19 +62,22 @@
 				class="form-control"
 				name="starttime"
 				type="datetime-local"
-				placeholder="yyyy-MM-ddTHH:mm:ss"
-				min="{{currentDate | date:'yyyy-MM-ddTHH:mm:ss'}}"
+				min="{{ startTimeMin }}"
 				ng-model="startTime"
 				required
+				ng-change= "updateTimeLimit()"
 			>
 		</div>
-	  <div class="form-group">
-	    <div ng-show="eventForm.endtime.$error">
-	      <div class="alert alert-danger" role="alert" ng-show="eventForm.endtime.$error.datetimelocal">
-	        Not a valid end date!
+		<div class="form-group">
+	    <div ng-messages="eventForm.starttime.$error">
+		    <div class="alert alert-danger" role="alert" ng-message="required">
+		      Please enter the start date.
+		    </div>
+	      <div class="alert alert-danger" role="alert" ng-message="datetimelocal">
+	        Not a valid date.
 	      </div>
-	      <div class="alert alert-danger" role="alert" ng-show="eventForm.endtime.$error.min">
-	        Must be in the future!
+	      <div class="alert alert-danger" role="alert" ng-message="min">
+	        Start date before or within 6 hours is not valid.
 	      </div>
 	    </div>
 	  </div>
@@ -95,12 +88,24 @@
 				class="form-control"
 				name="endtime"
 				type="datetime-local"
-				placeholder="yyyy-MM-ddTHH:mm:ss"
-				min="{{currentDate | date:'yyyy-MM-ddTHH:mm:ss'}}"
+				min="{{ endTimeMin }}"
 				ng-model="endTime"
 				required
 			>
 		</div>
+		<div class="form-group">
+	    <div ng-messages="eventForm.endtime.$error">
+		    <div class="alert alert-danger" role="alert" ng-message="required">
+		      Please enter the end date.
+		    </div>
+	      <div class="alert alert-danger" role="alert" ng-message="datetimelocal">
+	        Not a valid end date.
+	      </div>
+	      <div class="alert alert-danger" role="alert" ng-message="min">
+	        Cannot be within the same hour of the start date.
+	      </div>
+	    </div>
+	  </div>
 		<div class="form-group required">
 			<label for="guest-list">Whose on your guest list?</label>
 			<ul>

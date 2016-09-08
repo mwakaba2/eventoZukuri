@@ -15,9 +15,10 @@ angular
 				});
 			}
 		});
-		$scope.currentDate = getDate();
-		$scope.startTime = getDate();
-		$scope.endTime = getDate();
+		$scope.startTimeMin = getDate(6);
+		$scope.startTime = getDate(0);
+		$scope.endTime = $scope.startTime;
+		$scope.endTimeMin = addHours($scope.startTime, 1);
 		$scope.guests = [];
 		$scope.noGuests = true;
 		$scope.types = [
@@ -42,6 +43,11 @@ angular
 		];
 		$scope.selectedType = null;
 
+		$scope.updateTimeLimit = function() {
+			$scope.startTimeMin = getDate(6);
+			$scope.endTimeMin = addHours($scope.startTimeMin, 1);
+		};
+
 		$scope.addGuest = function() {
 			if($scope.guest) {
 				$scope.noGuests = false;
@@ -59,8 +65,17 @@ angular
 			}
 		};
 
-		function getDate() {
+		function addHours(date, hours) {
+			var newDate = new Date(date.valueOf());
+			newDate.setHours( newDate.getHours() + hours );
+			return newDate;
+		}
+
+		function getDate(hours) {
 			var newDate = new Date();
+			if(hours > 0) {
+				newDate = addHours(newDate, hours);
+			}
 			newDate.setMilliseconds(0);
 			newDate.setSeconds(0);
 			return newDate;
@@ -92,4 +107,5 @@ angular
 			firebase.database().ref().update(updates);
 			return newEventKey;
 		}
+
 	});
