@@ -3,9 +3,14 @@
 'use strict';
 
 var gulp = require('gulp');
+var bower = require('gulp-bower');
 
 var $ = require('gulp-load-plugins')({
 	pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license']
+});
+
+gulp.task('bower', function() {
+  return bower();
 });
 
 gulp.task('styles', function () {
@@ -90,4 +95,4 @@ gulp.task('clean', function () {
   return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.rimraf());
 });
 
-gulp.task('build', ['html', 'partials', 'images', 'fonts']);
+gulp.task('build', ['bower', 'html', 'partials', 'images', 'fonts']);
