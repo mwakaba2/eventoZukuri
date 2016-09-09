@@ -1,7 +1,7 @@
 <h3 ng-hide="isLoggedIn">Oops! You need to be logged in to see this page</h3>
 <div ng-show="isLoggedIn">
 	<h1>Let's create an event!</h1>
-	<form name="eventForm">
+	<form novalidate name="eventForm">
 		<div class="form-group required">
 		 	<label for="title">What's the name of the event?</label>
 		 	<input
@@ -63,7 +63,7 @@
 				name="starttime"
 				type="datetime-local"
 				min="{{ startTimeMin }}"
-				ng-model="startTime"
+				ng-model="parent.startTime"
 				required
 				ng-change= "updateTimeLimit()"
 			>
@@ -89,8 +89,9 @@
 				name="endtime"
 				type="datetime-local"
 				min="{{ endTimeMin }}"
-				ng-model="endTime"
+				ng-model="parent.endTime"
 				required
+				ng-change= "updateTimeLimit()"
 			>
 		</div>
 		<div class="form-group">
@@ -102,7 +103,7 @@
 	        Not a valid end date.
 	      </div>
 	      <div class="alert alert-danger" role="alert" ng-message="min">
-	        Cannot be within the same hour of the start date.
+	        Cannot be within the same hour of the start date or before.
 	      </div>
 	    </div>
 	  </div>

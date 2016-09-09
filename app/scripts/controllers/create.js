@@ -15,10 +15,12 @@ angular
 				});
 			}
 		});
+		$scope.parent = {
+			startTime: getDate(0),
+			endTime: getDate(0)
+		};
 		$scope.startTimeMin = getDate(6);
-		$scope.startTime = getDate(0);
-		$scope.endTime = $scope.startTime;
-		$scope.endTimeMin = addHours($scope.startTime, 1);
+		$scope.endTimeMin = getDate(7);
 		$scope.guests = [];
 		$scope.noGuests = true;
 		$scope.types = [
@@ -45,7 +47,7 @@ angular
 
 		$scope.updateTimeLimit = function() {
 			$scope.startTimeMin = getDate(6);
-			$scope.endTimeMin = addHours($scope.startTimeMin, 1);
+			$scope.endTimeMin = addHours($scope.parent.startTime, 1);
 		};
 
 		$scope.addGuest = function() {
@@ -66,9 +68,11 @@ angular
 		};
 
 		function addHours(date, hours) {
-			var newDate = new Date(date.valueOf());
-			newDate.setHours( newDate.getHours() + hours );
-			return newDate;
+			if(date !== undefined){
+				var newDate = new Date(date.valueOf());
+				newDate.setHours( newDate.getHours() + hours );
+				return newDate;
+			}
 		}
 
 		function getDate(hours) {
@@ -89,8 +93,8 @@ angular
 				title: $scope.title,
 				type: $scope.selectedType.value,
 				host: $scope.host,
-				start_time: $scope.startTime,
-				end_time: $scope.endTime,
+				start_time: $scope.parent.startTime,
+				end_time: $scope.parent.endTime,
 				location: $scope.location,
 				guest_list: $scope.guests,
 				message: $scope.message || '',
