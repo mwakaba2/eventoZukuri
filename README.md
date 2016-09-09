@@ -9,6 +9,18 @@ Udacity Senior Developer Nanodegree Project One
   * Event Creation
   * Read access to Events
 
+### Bower and Npm dependencies ###
+First make sure you have all the packages before building.
+
+To install bower components
+```bash
+bower install
+```
+To install npm components
+```bash
+npm install
+```
+
 ### To run the application locally ###
 ```bash
 gulp serve
