@@ -9,9 +9,13 @@ Udacity Senior Developer Nanodegree Project One
   * Event Creation
   * Read access to Events
 
-### To run the application ###
+### To run the application locally ###
 ```bash
 gulp serve
+```
+### To build and serve production code ###
+```bash
+gulp serve:dist
 ```
 ### Tech Stack ###
   * Angular
