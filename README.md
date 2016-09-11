@@ -21,6 +21,12 @@ To install npm components
 npm install
 ```
 
+## Build Instructions is for the following setup ##
+  * OS: Mac OS (OS X El Capitan) 10.11.6
+  * Node Version: v4.0.0
+  * NPM Version: 2.14.2
+  * Bower version: 1.7.9
+
 ### To run the application locally ###
 ```bash
 gulp serve
