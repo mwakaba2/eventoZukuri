@@ -28,6 +28,7 @@ function browserSyncInit(baseDir, files, browser) {
     startPath: '/index.html',
     server: {
       baseDir: baseDir,
+      port: process.env.PORT || 5000,
       middleware: proxyMiddleware
     },
     browser: browser
@@ -53,3 +54,4 @@ gulp.task('serve:e2e', function () {
 gulp.task('serve:e2e-dist', ['watch'], function () {
   browserSyncInit('dist', null, []);
 });
+
