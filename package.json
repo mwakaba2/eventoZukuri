@@ -52,5 +52,9 @@
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "scripts": {
+    "start": "node app",
+    "postinstall": "bower install && gulp build"
   }
 }
