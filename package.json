@@ -54,7 +54,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "node app",
+    "start": "gulp serve",
     "postinstall": "bower install && gulp build"
   }
 }
